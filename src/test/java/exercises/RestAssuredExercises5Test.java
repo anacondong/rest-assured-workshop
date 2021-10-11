@@ -10,6 +10,7 @@ import org.junit.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static io.restassured.RestAssured.given;
 
+@Ignore
 public class RestAssuredExercises5Test {
 
 	private static RequestSpecification requestSpec;

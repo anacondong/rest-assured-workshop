@@ -5,16 +5,14 @@ import dataentities.Photo;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static io.restassured.RestAssured.given;
 
+@Ignore
 public class RestAssuredExercises6Test {
 
 	private static RequestSpecification requestSpec;

@@ -9,6 +9,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
+@Ignore
 public class RestAssuredExercises4Test {
 
 	private static RequestSpecification requestSpec;

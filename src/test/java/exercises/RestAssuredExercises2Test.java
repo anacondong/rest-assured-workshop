@@ -11,7 +11,8 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-@RunWith(DataProviderRunner.class)
+//@RunWith(DataProviderRunner.class)
+@Ignore
 public class RestAssuredExercises2Test {
 
 	private static RequestSpecification requestSpec;
