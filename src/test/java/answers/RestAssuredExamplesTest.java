@@ -71,7 +71,8 @@ public class RestAssuredExamplesTest {
     public void useQueryParameter() {
 
         given().
-            queryParam("text", "testcase").
+            log().all().
+            queryParam("text", "testcase"). // add query param
         when().
             get("http://md5.jsontest.com").
         then().
@@ -83,6 +84,7 @@ public class RestAssuredExamplesTest {
     public void usePathParameter() {
 
         given().
+            log().all().
             pathParam("userId",1).
         when().
             get("http://jsonplaceholder.typicode.com/users/{userId}").
@@ -109,7 +111,11 @@ public class RestAssuredExamplesTest {
             body("name",equalTo(expectedUserName));
     }
 
-    private static ResponseSpecification responseSpec;
+
+
+
+    // ===================== Mock by ResponseSpecification ==============================
+    private static ResponseSpecification responseSpec;  // Specify How The Expected Response Must Look Like
 
     @BeforeClass
     public static void createResponseSpec() {
@@ -123,7 +129,6 @@ public class RestAssuredExamplesTest {
 
     @Test
     public void useResponseSpec() {
-
         given().
         when().
             get("http://jsonplaceholder.typicode.com/users/1").
@@ -133,16 +138,29 @@ public class RestAssuredExamplesTest {
             body("name", equalTo("Leanne Graham"));
     }
 
-    private static RequestSpecification requestSpec;
+
+    private static RequestSpecification requestSpec; // Specify How The Expected Request Must Look Like
 
     @BeforeClass
     public static void createRequestSpec() {
 
         requestSpec =
             new RequestSpecBuilder().
-                setBaseUri("http://api.zippopotam.us").
-                setPort(9876).
+                setBaseUri("http://jsonplaceholder.typicode.com/").
                 build();
+    }
+
+    @Test
+    public void useRequestSpec() {
+
+        given().
+            log().all().
+            spec(requestSpec).
+        when().
+            get("/users/1").
+        then().
+            assertThat().
+            statusCode(200);
     }
 
 
